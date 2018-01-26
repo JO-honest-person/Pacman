@@ -10,6 +10,7 @@ public class strongGhost{
     private double lastx,lasty;
     private double v = 0.5;
     private int straightmove = 0;//0ÍùÉÏ£¬1ÍùÏÂ£¬2Íù×ó£¬3ÍùÓÒ
+    private Judge judge=new Judge();
     public  strongGhost(double i,double j){
         x = i;
         X = i;
@@ -20,18 +21,18 @@ public class strongGhost{
         if(stepofbestuck >= 10){
             entire:{
                 if(straightmove == 0){
-                    if(walk(x,y-22*v)){
+                    if(!judge.isWall(x,y-22*v)){
                         move();
                         break entire;
                     }
                     //Ó¦¸ÃÍù×ó×ß¡£
                     else if((px - nx < 0) && (py == ny )){
-                        if(walk(x-22*v,y)) {
+                        if(!judge.isWall(x-22*v,y)) {
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -44,12 +45,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒ×ß¡£
                     else if((py == ny) && (px - nx > 0)){
-                        if(walk(x+22*v,y)){
+                        if(!judge.isWall(x+22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y + 22*v)){
+                        else if(!judge.isWall(x,y + 22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -62,12 +63,12 @@ public class strongGhost{
                     }
                     //ÓÃ¹ýÍùÏÂ×ß¡£
                     else if((px == nx) && (py - ny > 0)){
-                        if(walk(x,y+22*v)) {
+                        if(!judge.isWall(x,y+22*v)) {
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -80,12 +81,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÏÂ×ß.
                     else if((px - nx > 0) && (py - ny > 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -98,12 +99,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÉÏ×ß.
                     else if((px - nx > 0) && (py - ny < 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -116,12 +117,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÉÏ×ß¡£
                     else if((px - nx < 0) && (py - ny < 0)){
-                        if(walk(x-22*v ,y)){
+                        if(!judge.isWall(x-22*v ,y)){
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -134,12 +135,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÏÂ×ß
                     else {
-                        if(walk(x-22*v,y)){
+                        if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -152,18 +153,18 @@ public class strongGhost{
                     }
                 }
                 if(straightmove == 1){
-                    if(walk(x,y+22*v)){
+                    if(!judge.isWall(x,y+22*v)){
                         move();
                         break entire;
                     }
                     //Ó¦¸ÃÍù×ó×ß¡£
                     else if((px - nx < 0) && (py == ny )){
-                        if(walk(x-22*v,y)) {
+                        if(!judge.isWall(x-22*v,y)) {
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -176,12 +177,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒ×ß¡£
                     else if((py == ny) && (px - nx > 0)){
-                        if(walk(x+22*v,y)){
+                        if(!judge.isWall(x+22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y - 22*v)){
+                        else if(!judge.isWall(x,y - 22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -194,12 +195,12 @@ public class strongGhost{
                     }
                     //ÓÃ¹ýÍùÉÏ×ß¡£
                     else if((px == nx) && (py - ny < 0)){
-                        if(walk(x,y-22*v)) {
+                        if(!judge.isWall(x,y-22*v)) {
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -212,12 +213,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÏÂ×ß.
                     else if((px - nx > 0) && (py - ny > 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -230,12 +231,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÉÏ×ß.
                     else if((px - nx > 0) && (py - ny < 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -248,12 +249,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÉÏ×ß¡£
                     else if((px - nx < 0) && (py - ny < 0)){
-                        if(walk(x ,y-22*v)){
+                        if(!judge.isWall(x ,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -266,12 +267,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÏÂ×ß
                     else {
-                        if(walk(x-22*v,y)){
+                        if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -284,18 +285,18 @@ public class strongGhost{
                     }
                 }
                 if(straightmove == 2){
-                    if(walk(x-22*v,y)){
+                    if(!judge.isWall(x-22*v,y)){
                         move();
                         break entire;
                     }
                     //Ó¦¸ÃÍùÏÂ×ß¡£
                     else if((px == nx) && (py - ny > 0)){
-                        if(walk(x,y+22*v)) {
+                        if(!judge.isWall(x,y+22*v)) {
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x+22*v,y)){
+                        else if(!judge.isWall(x+22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
@@ -308,12 +309,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒ×ß¡£
                     else if((py == ny) && (px - nx > 0)){
-                        if(walk(x+22*v,y)){
+                        if(!judge.isWall(x+22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y - 22*v)){
+                        else if(!judge.isWall(x,y - 22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -326,12 +327,12 @@ public class strongGhost{
                     }
                     //ÓÃ¹ýÍùÉÏ×ß¡£
                     else if((px == nx) && (py - ny < 0)){
-                        if(walk(x,y-22*v)) {
+                        if(!judge.isWall(x,y-22*v)) {
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x+22*v,y)){
+                        else if(!judge.isWall(x+22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
@@ -344,12 +345,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÏÂ×ß.
                     else if((px - nx > 0) && (py - ny > 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -362,12 +363,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÉÏ×ß.
                     else if((px - nx > 0) && (py - ny < 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -380,11 +381,11 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÉÏ×ß¡£
                     else if((px - nx < 0) && (py - ny < 0)){
-                        if(walk(x ,y-22*v)){
+                        if(!judge.isWall(x ,y-22*v)){
                             straightmove = 0;
                             move();
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -397,12 +398,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÏÂ×ß
                     else {
-                        if(walk(x,y+22*v)){
+                        if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -415,18 +416,18 @@ public class strongGhost{
                     }
                 }
                 if(straightmove == 3){
-                    if(walk(x+22*v,y)){
+                    if(!judge.isWall(x+22*v,y)){
                         move();
                         break entire;
                     }
                     //Ó¦¸ÃÍùÏÂ×ß¡£
                     else if((px == nx) && (py - ny > 0)){
-                        if(walk(x,y+22*v)) {
+                        if(!judge.isWall(x,y+22*v)) {
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -439,12 +440,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×ó×ß¡£
                     else if((py == ny) && (px - nx < 0)){
-                        if(walk(x-22*v,y)){
+                        if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y - 22*v)){
+                        else if(!judge.isWall(x,y - 22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -457,12 +458,12 @@ public class strongGhost{
                     }
                     //ÓÃ¹ýÍùÉÏ×ß¡£
                     else if((px == nx) && (py - ny < 0)){
-                        if(walk(x,y-22*v)) {
+                        if(!judge.isWall(x,y-22*v)) {
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -475,12 +476,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÏÂ×ß.
                     else if((px - nx > 0) && (py - ny > 0)){
-                        if(walk(x,y+22*v)){
+                        if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -493,12 +494,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÉÏ×ß.
                     else if((px - nx > 0) && (py - ny < 0)){
-                        if(walk(x,y-22*v)){
+                        if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -511,12 +512,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÉÏ×ß¡£
                     else if((px - nx < 0) && (py - ny < 0)){
-                        if(walk(x ,y-22*v)){
+                        if(!judge.isWall(x ,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -529,12 +530,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÏÂ×ß
                     else {
-                        if(walk(x,y+22*v)){
+                        if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -554,18 +555,18 @@ public class strongGhost{
         if(stepofbestuck >= 10){
             entire:{
                 if(straightmove == 0){
-                    if(walk(x,y-22*v)){
+                    if(!judge.isWall(x,y-22*v)){
                         move();
                         break entire;
                     }
                     //Ó¦¸ÃÍù×ó×ß¡£
                     else if((py == ny) && (px - nx > 0)){
-                        if(walk(x-22*v,y)) {
+                        if(!judge.isWall(x-22*v,y)) {
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -578,12 +579,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒ×ß¡£
                     else if((px - nx < 0) && (py == ny )){
-                        if(walk(x+22*v,y)){
+                        if(!judge.isWall(x+22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y + 22*v)){
+                        else if(!judge.isWall(x,y + 22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -596,12 +597,12 @@ public class strongGhost{
                     }
                     //ÓÃ¹ýÍùÏÂ×ß¡£
                     else if((px == nx) && (py - ny > 0)){
-                        if(walk(x+22*v,y)) {
+                        if(!judge.isWall(x+22*v,y)) {
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -614,12 +615,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÏÂ×ß.
                     else if((px - nx < 0) && (py - ny < 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -632,12 +633,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÉÏ×ß.
                     else if((px - nx < 0) && (py - ny > 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -650,12 +651,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÉÏ×ß¡£
                     else if((px - nx > 0) && (py - ny > 0)){
-                        if(walk(x-22*v ,y)){
+                        if(!judge.isWall(x-22*v ,y)){
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -668,12 +669,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÏÂ×ß
                     else {
-                        if(walk(x-22*v,y)){
+                        if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -686,18 +687,18 @@ public class strongGhost{
                     }
                 }
                 if(straightmove == 1){
-                    if(walk(x,y+22*v)){
+                    if(!judge.isWall(x,y+22*v)){
                         move();
                         break entire;
                     }
                     //Ó¦¸ÃÍù×ó×ß¡£
                     else if((py == ny) && (px - nx > 0)){
-                        if(walk(x-22*v,y)) {
+                        if(!judge.isWall(x-22*v,y)) {
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -710,12 +711,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒ×ß¡£
                     else if((px - nx < 0) && (py == ny )){
-                        if(walk(x+22*v,y)){
+                        if(!judge.isWall(x+22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y - 22*v)){
+                        else if(!judge.isWall(x,y - 22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -728,12 +729,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÏÂ×ß¡£
                     else if((px == nx) && (py - ny < 0)){
-                        if(walk(x+22*v,y)) {
+                        if(!judge.isWall(x+22*v,y)) {
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -746,12 +747,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÏÂ×ß.
                     else if((px - nx < 0) && (py - ny < 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -764,12 +765,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÉÏ×ß.
                     else if((px - nx < 0) && (py - ny > 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -782,12 +783,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÉÏ×ß¡£
                     else if((px - nx > 0) && (py - ny > 0)){
-                        if(walk(x ,y-22*v)){
+                        if(!judge.isWall(x ,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -800,12 +801,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÏÂ×ß
                     else {
-                        if(walk(x-22*v,y)){
+                        if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -818,18 +819,18 @@ public class strongGhost{
                     }
                 }
                 if(straightmove == 2){
-                    if(walk(x-22*v,y)){
+                    if(!judge.isWall(x-22*v,y)){
                         move();
                         break entire;
                     }
                     //Ó¦¸ÃÍùÏÂ×ß¡£
                     else if((px == nx) && (py - ny < 0)){
-                        if(walk(x,y+22*v)) {
+                        if(!judge.isWall(x,y+22*v)) {
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x+22*v,y)){
+                        else if(!judge.isWall(x+22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
@@ -842,12 +843,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×ó×ß¡£
                     else if((py == ny) && (px - nx > 0)){
-                        if(walk(x,y+22*v)){
+                        if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y - 22*v)){
+                        else if(!judge.isWall(x,y - 22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -860,12 +861,12 @@ public class strongGhost{
                     }
                     //ÓÃ¹ýÍùÉÏ×ß¡£
                     else if((px == nx) && (py - ny > 0)){
-                        if(walk(x,y-22*v)) {
+                        if(!judge.isWall(x,y-22*v)) {
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -878,12 +879,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÏÂ×ß.
                     else if((px - nx < 0) && (py - ny < 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -896,12 +897,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÉÏ×ß.
                     else if((px - nx < 0) && (py - ny > 0)){
-                        if(walk(x + 22*v,y)){
+                        if(!judge.isWall(x + 22*v,y)){
                             straightmove = 3;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -914,11 +915,11 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÉÏ×ß¡£
                     else if((px - nx > 0) && (py - ny > 0)){
-                        if(walk(x ,y-22*v)){
+                        if(!judge.isWall(x ,y-22*v)){
                             straightmove = 0;
                             move();
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -931,12 +932,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÏÂ×ß
                     else {
-                        if(walk(x,y+22*v)){
+                        if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -949,18 +950,18 @@ public class strongGhost{
                     }
                 }
                 if(straightmove == 3){
-                    if(walk(x+22*v,y)){
+                    if(!judge.isWall(x+22*v,y)){
                         move();
                         break entire;
                     }
                     //Ó¦¸ÃÍùÏÂ×ß¡£
                     else if((px == nx) && (py - ny < 0)){
-                        if(walk(x,y+22*v)) {
+                        if(!judge.isWall(x,y+22*v)) {
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y-22*v)){
+                        else if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -973,12 +974,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒ×ß¡£
                     else if((py == ny) && (px - nx < 0)){
-                        if(walk(x,y+22*v)){
+                        if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y - 22*v)){
+                        else if(!judge.isWall(x,y - 22*v)){
                             straightmove = 0;
                             move();
                             break entire;
@@ -991,12 +992,12 @@ public class strongGhost{
                     }
                     //ÓÃ¹ýÍùÉÏ×ß¡£
                     else if((px == nx) && (py - ny > 0)){
-                        if(walk(x,y-22*v)) {
+                        if(!judge.isWall(x,y-22*v)) {
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x,y+22*v)){
+                        else if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
@@ -1009,12 +1010,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÏÂ×ß.
                     else if((px - nx < 0) && (py - ny < 0)){
-                        if(walk(x,y+22*v)){
+                        if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -1027,12 +1028,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍùÓÒÉÏ×ß.
                     else if((px - nx < 0) && (py - ny > 0)){
-                        if(walk(x,y-22*v)){
+                        if(!judge.isWall(x,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -1045,12 +1046,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÉÏ×ß¡£
                     else if((px - nx > 0) && (py - ny > 0)){
-                        if(walk(x ,y-22*v)){
+                        if(!judge.isWall(x ,y-22*v)){
                             straightmove = 0;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -1063,12 +1064,12 @@ public class strongGhost{
                     }
                     //Ó¦¸ÃÍù×óÏÂ×ß
                     else {
-                        if(walk(x,y+22*v)){
+                        if(!judge.isWall(x,y+22*v)){
                             straightmove = 1;
                             move();
                             break entire;
                         }
-                        else if(walk(x-22*v,y)){
+                        else if(!judge.isWall(x-22*v,y)){
                             straightmove = 2;
                             move();
                             break entire;
@@ -1211,50 +1212,5 @@ public class strongGhost{
     public void playagain(){
         stepofbestuck = 10;
     }
-    private boolean walk(double x,double y){
-        boolean result = false;
-        if((x == 40) && ((y >= 40 && y <= 194) || (y == 326) || (y >= 458 && y <= 524) || (y >= 590 && y <= 656) ))
-            result = true;
-        if((x == 150) && ((y >= 40 && y <= 590) || (y == 656) ))
-            result = true;
-        if((x == 216) && ((y == 40) || (y >= 128 && y <= 194) || (y >= 260 && y <= 458) || (y >= 524 && y <= 590) || (y == 656) ))
-            result = true;
-        if((x == 282) && ((y >= 40 && y <= 128) || (y >= 194 && y <= 260) || (y >= 326 && y <= 348) || (y == 392) || (y >= 458 && y <= 524 ) || (y >= 590 && y <=656 ) ))
-            result = true;
-        if((x == 304 || x == 326)&&((y == 128) || (y == 260) || (y == 392) || (y == 524) || (y == 656)))
-            result = true;
-        if((x == 348) && ((y >= 40 && y <= 128) || (y >= 194 && y <= 260) || (y >= 326 && y <= 348) || (y == 392) || (y >= 458 && y <= 524 ) || (y >= 590 && y <=656 ) ))
-            result = true;
-        if((x == 414) && ((y == 40) || (y >= 128 && y <= 194) || (y >= 260 && y <= 458) || (y >= 524 && y <= 590) || (y == 656) ))
-            result = true;
-        if((x == 480) && ((y >= 40 && y <= 590) || (y == 656) ))
-            result = true;
-        if((x == 590) && ((y >= 40 && y <= 194) || (y == 326) || (y >= 458 && y <= 524) || (y >= 590 && y <= 656) ))
-            result = true;
-        if((y == 40) && ((x >= 40 && x <= 282) || (x >= 348 && x <= 590)))
-            result = true;
-        if((y == 128) && (x >= 40 && x <= 590))
-            result = true;
-        if((y == 194) && ((x >= 40 && x <= 150) || (x >= 216 && x <= 282) || (x >= 348 && x <= 414) || (x >= 480 && x <= 590)))
-            result = true;
-        if((y == 260) && ((x >= 216 && x <= 414)))
-            result =true;
-        if((y == 326) && ((x >= 18 && x <= 216) || (x >= 282 && x <= 348) || (x >= 414 && x <= 612)))
-            result = true;
-        if((y == 392) && ((x >= 216 && x <= 414)))
-            result =true;
-        if((y == 458) && ((x >= 40 && x <= 282) || ( x >= 348 && x <= 590)))
-            result = true;
-        if((y == 524) && ((x >= 40 && x <= 84) || (x >= 150 && x <= 480) || (x >= 546 && x <= 590)))
-            result = true;
-        if((y == 590) && ((x >= 40 && x <= 150) || (x >= 216 && x <= 282) || (x >= 348 && x <= 414) || (x >= 480 && x <= 590)))
-            result = true;
-        if((y == 656) && (x >= 40 && x <= 590))
-            result = true;
-        if((x == 84 || x == 546) && (y == 546 || y == 568))
-            result = true;
-        if((x == 304 || x == 326) && (y == 282 || y == 304 || y == 348 ))
-            result = true;
-        return result;
-    }
+
 }

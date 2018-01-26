@@ -9,6 +9,7 @@ public class simpleGhost{
     private int stepofbestuck = 10;
     private double lastx,lasty;
     private double v = 0.5;
+    private Judge judge=new Judge();
     public  simpleGhost(double i,double j){
         x = i;
         X = i;
@@ -21,25 +22,25 @@ public class simpleGhost{
             while(ensuremove) {
                 int move = (int)(Math.random()*4);
                 if(move == 0) {
-                    if (walk(x,y-(22*v) )){
+                    if (!judge.isWall(x,y-(22*v) )){
                         y = y-(22*v);
                         ensuremove = false;
                     }
                 }
                 if(move == 1) {
-                    if (walk(x,y+22*v)){
+                    if (!judge.isWall(x,y+22*v)){
                         y = y + 22*v;
                         ensuremove = false;
                     }
                 }
                 if(move == 2) {
-                    if (walk(x-22*v,y)){
+                    if (!judge.isWall(x-22*v,y)){
                         x = x - 22*v;
                         ensuremove = false;
                     }
                 }
                 if(move == 3) {
-                    if (walk(x+22*v,y)){
+                    if (!judge.isWall(x+22*v,y)){
                         x = x + 22*v;
                         ensuremove = false;
                     }
@@ -196,50 +197,5 @@ public class simpleGhost{
             die = true;
         return die;
     }
-    private boolean walk(double x,double y){
-        boolean result = false;
-        if((x == 40) && ((y >= 40 && y <= 194) || (y == 326) || (y >= 458 && y <= 524) || (y >= 590 && y <= 656) ))
-            result = true;
-        if((x == 150) && ((y >= 40 && y <= 590) || (y == 656) ))
-            result = true;
-        if((x == 216) && ((y == 40) || (y >= 128 && y <= 194) || (y >= 260 && y <= 458) || (y >= 524 && y <= 590) || (y == 656) ))
-            result = true;
-        if((x == 282) && ((y >= 40 && y <= 128) || (y >= 194 && y <= 260) || (y >= 326 && y <= 348) || (y == 392) || (y >= 458 && y <= 524 ) || (y >= 590 && y <=656 ) ))
-            result = true;
-        if((x == 304 || x == 326)&&((y == 128) || (y == 260) || (y == 392) || (y == 524) || (y == 656)))
-            result = true;
-        if((x == 348) && ((y >= 40 && y <= 128) || (y >= 194 && y <= 260) || (y >= 326 && y <= 348) || (y == 392) || (y >= 458 && y <= 524 ) || (y >= 590 && y <=656 ) ))
-            result = true;
-        if((x == 414) && ((y == 40) || (y >= 128 && y <= 194) || (y >= 260 && y <= 458) || (y >= 524 && y <= 590) || (y == 656) ))
-            result = true;
-        if((x == 480) && ((y >= 40 && y <= 590) || (y == 656) ))
-            result = true;
-        if((x == 590) && ((y >= 40 && y <= 194) || (y == 326) || (y >= 458 && y <= 524) || (y >= 590 && y <= 656) ))
-            result = true;
-        if((y == 40) && ((x >= 40 && x <= 282) || (x >= 348 && x <= 590)))
-            result = true;
-        if((y == 128) && (x >= 40 && x <= 590))
-            result = true;
-        if((y == 194) && ((x >= 40 && x <= 150) || (x >= 216 && x <= 282) || (x >= 348 && x <= 414) || (x >= 480 && x <= 590)))
-            result = true;
-        if((y == 260) && ((x >= 216 && x <= 414)))
-            result =true;
-        if((y == 326) && ((x >= 18 && x <= 216) || (x >= 282 && x <= 348) || (x >= 414 && x <= 612)))
-            result = true;
-        if((y == 392) && ((x >= 216 && x <= 414)))
-            result =true;
-        if((y == 458) && ((x >= 40 && x <= 282) || ( x >= 348 && x <= 590)))
-            result = true;
-        if((y == 524) && ((x >= 40 && x <= 84) || (x >= 150 && x <= 480) || (x >= 546 && x <= 590)))
-            result = true;
-        if((y == 590) && ((x >= 40 && x <= 150) || (x >= 216 && x <= 282) || (x >= 348 && x <= 414) || (x >= 480 && x <= 590)))
-            result = true;
-        if((y == 656) && (x >= 40 && x <= 590))
-            result = true;
-        if((x == 84 || x == 546) && (y == 546 || y == 568))
-            result = true;
-        if((x == 304 || x == 326) && (y == 282 || y == 304 || y == 348 ))
-            result = true;
-        return result;
-    }
+
 }

@@ -18,6 +18,7 @@ import javafx.util.Duration;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -61,12 +62,15 @@ public class Main extends Application {
     strongGhost strongghost2 = new strongGhost(282,260);
     Pacman pacman = new Pacman();
     Music music = new Music();
+    private Judge judge=new Judge();
     Circle[][] circles = new Circle[26][29];//用于储存豆子。画豆子。
     //用于播放音乐
     public void start(Stage primarystage) {
         //开始界面
         Pane beginpane = new Pane();
         Scene beginscene = new Scene(beginpane,670,300);
+        //for new Image(); If the passed string is not a valid URL, but a path instead, the Image is searched on the classpath in that case.So, Resources must be placed
+        //under src
         ImageView back = new ImageView(new Image("Resources\\11.png"));back.setFitHeight(300);back.setFitWidth(300);
         ImageView n1 = new ImageView(new Image("Resources\\21.png"));n1.setFitHeight(40);n1.setFitWidth(40);
         ImageView n2 = new ImageView(new Image("Resources\\22.png"));n2.setFitHeight(40);n2.setFitWidth(40);
@@ -417,7 +421,7 @@ public class Main extends Application {
                     {
                         for (int i = 0; i < bean.getx(); i++) {
                             for (int j = 0; j < bean.gety(); j++) {
-                                if (bean.getvalue(i,j)) {
+                                if (bean.getValue(i,j)) {
                                     break win;
                                 }
                             }
@@ -432,7 +436,7 @@ public class Main extends Application {
                     {
                         for (int i = 0; i < bean.getx(); i++) {
                             for (int j = 0; j < bean.gety(); j++) {
-                                if (bean.getvalue(i,j)) {
+                                if (bean.getValue(i,j)) {
                                     break win;
                                 }
                             }
@@ -447,7 +451,7 @@ public class Main extends Application {
                     {
                         for (int i = 0; i < bean.getx(); i++) {
                             for (int j = 0; j < bean.gety(); j++) {
-                                if (bean.getvalue(i,j)) {
+                                if (bean.getValue(i,j)) {
                                     break win;
                                 }
                             }
@@ -462,7 +466,7 @@ public class Main extends Application {
                     {
                         for (int i = 0; i < bean.getx(); i++) {
                             for (int j = 0; j < bean.gety(); j++) {
-                                if (bean.getvalue(i,j)) {
+                                if (bean.getValue(i,j)) {
                                     break win;
                                 }
                             }
@@ -544,14 +548,14 @@ public class Main extends Application {
             for (int i = 0, r = 40; i < bean.getx(); i++) {
                 for (int j = 0, l = 40; j < bean.gety(); j++) {
                     //豆子
-                    if (bean.getvalue(i, j)) {
+                    if (bean.getValue(i, j)) {
                         circles[i][j].setRadius(4);
                         circles[i][j].setCenterX(r + 10);
                         circles[i][j].setCenterY(l + 10);
                         // pane.getChildren().add(circles[i][j]);
                     }
                     //大力丸
-                    else if (bean.getvalueofbigbean(i, j)) {
+                    else if (bean.getValueOfBigbean(i, j)) {
                         circles[i][j].setRadius(8);
                         circles[i][j].setCenterX(r + 10);
                         circles[i][j].setCenterY(l + 10);
@@ -763,10 +767,10 @@ public class Main extends Application {
         public void run() {
             if(playorpause){
                 Platform.runLater(() ->{
-                    if (pacman.walk(pacman.getx(), pacman.gety() - 22 * pacman.getV()) && move == 0) dir = 0;
-                    if (pacman.walk(pacman.getx(), pacman.gety() + 22 * pacman.getV()) && move == 1) dir = 1;
-                    if (pacman.walk(pacman.getx() - 22 * pacman.getV(), pacman.gety()) && move == 2) dir = 2;
-                    if (pacman.walk(pacman.getx() + 22 * pacman.getV(), pacman.gety()) && move == 3) dir = 3;
+                    if (!judge.isWall(pacman.getx(), pacman.gety() - 22 * pacman.getV()) && move == 0) dir = 0;
+                    if (!judge.isWall(pacman.getx(), pacman.gety() + 22 * pacman.getV()) && move == 1) dir = 1;
+                    if (!judge.isWall(pacman.getx() - 22 * pacman.getV(), pacman.gety()) && move == 2) dir = 2;
+                    if (!judge.isWall(pacman.getx() + 22 * pacman.getV(), pacman.gety()) && move == 3) dir = 3;
                     pacman.record();
                     simplenpc1.record();
                     simplenpc2.record();
@@ -774,7 +778,7 @@ public class Main extends Application {
                     strongghost2.record();
                     if(dir == 0){
                         pacmanview.setRotate(90);
-                        if (pacman.walk(pacman.getx(), pacman.gety() - 22*pacman.getV())) {
+                        if (!judge.isWall(pacman.getx(), pacman.gety() - 22*pacman.getV())) {
                             pacman.sety(pacman.gety() - 22*pacman.getV());
                    /* if((pacman.getx() - 40)%22 == 0 && (pacman.gety() - 40)%22 == 0 &&  !(pacman.getx() == 18 && pacman.gety() == 326) && !(pacman.getx() == 612 && pacman.gety() == 326) ) {
                         if (bean.getvalue((int) (pacman.getx() - 40) / 22, (int) (pacman.gety() - 40) / 22)) {
@@ -794,7 +798,7 @@ public class Main extends Application {
                     }
                     if(dir == 1){
                         pacmanview.setRotate(-90);
-                        if (pacman.walk(pacman.getx(), pacman.gety() + 22*pacman.getV())) {
+                        if (!judge.isWall(pacman.getx(), pacman.gety() + 22*pacman.getV())) {
                             pacman.sety(pacman.gety() + 22*pacman.getV());
                    /* if((pacman.getx() - 40)%22 == 0 && (pacman.gety() - 40)%22 == 0 &&  !(pacman.getx() == 18 && pacman.gety() == 326) && !(pacman.getx() == 612 && pacman.gety() == 326) ) {
                         if (bean.getvalue((int) (pacman.getx() - 40) / 22, (int) (pacman.gety() - 40) / 22)) {
@@ -814,7 +818,7 @@ public class Main extends Application {
                     }
                     if(dir == 2){
                         pacmanview.setRotate(0);
-                        if (pacman.walk(pacman.getx()-22*pacman.getV(), pacman.gety())) {
+                        if (!judge.isWall(pacman.getx()-22*pacman.getV(), pacman.gety())) {
                             pacman.setx(pacman.getx() - 22*pacman.getV());
                     /* if((pacman.getx() - 40)%22 == 0 && (pacman.gety() - 40)%22 == 0 &&  !(pacman.getx() == 18 && pacman.gety() == 326) && !(pacman.getx() == 612 && pacman.gety() == 326) ) {
                         if (bean.getvalue((int) (pacman.getx() - 40) / 22, (int) (pacman.gety() - 40) / 22)) {
@@ -837,7 +841,7 @@ public class Main extends Application {
                     }
                     if(dir == 3){
                         pacmanview.setRotate(180);
-                        if (pacman.walk(pacman.getx()+22*pacman.getV(), pacman.gety())) {
+                        if (!judge.isWall(pacman.getx()+22*pacman.getV(), pacman.gety())) {
                             pacman.setx(pacman.getx() + 22*pacman.getV());
                    /* if((pacman.getx() - 40)%22 == 0 && (pacman.gety() - 40)%22 == 0 &&  !(pacman.getx() == 18 && pacman.gety() == 326) && !(pacman.getx() == 612 && pacman.gety() == 326) ) {
                         if (bean.getvalue((int) (pacman.getx() - 40) / 22, (int) (pacman.gety() - 40) / 22)) {
@@ -975,7 +979,7 @@ public class Main extends Application {
                     }
                     for (int i = 0, r = 40; i < bean.getx(); i++) {
                         for (int j = 0, l = 40; j < bean.gety(); j++) {
-                            if (!bean.getvalue(i,j) && !bean.getvalueofbigbean(i,j)){
+                            if (!bean.getValue(i,j) && !bean.getValueOfBigbean(i,j)){
                                 circles[i][j].setRadius(-1);
                             }
                             l = l + 22;
