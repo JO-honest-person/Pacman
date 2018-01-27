@@ -164,18 +164,18 @@ public class Main extends Application {
 
         //帮助界面
         Pane helepane = new Pane();
-        Scene helpscene = new Scene(helepane);
-        ImageView helpview = new ImageView(new Image("Resources\\help.jpg"));
+        Scene helpscene = new Scene(helepane,670,300);
+        ImageView helpview = new ImageView(new Image("Resources\\help_back.jpg"));
         ImageView backup = new ImageView(new Image("Resources\\row.jpg"));
-        helpview.setFitWidth(310);helpview.setFitHeight(240);
+        helpview.setFitWidth(670);helpview.setFitHeight(400);
         backup.setX(5);backup.setY(5);backup.setFitHeight(50);backup.setFitWidth(75);
-        Label helpleble = new Label(); helpleble.setLayoutY(60);
-        Text helptext = new Text("H e l p");helptext.setX(90);helptext.setY(40);
+        Label helpleble = new Label(); helpleble.setLayoutX(270);helpleble.setLayoutY(60);
+        Text helptext = new Text("H e l p");helptext.setX(260);helptext.setY(40);
         helpleble.setText("   Use W S A D to control the moving of  pacman.\n If you don't want to move,just type the space. Wh\n en you eat the red beans, you can  eat the ghost " +
                 "\n Every bean you eat ,you will get  10 ,and red bean \n or ghost 100. You can enter the list of the top five \n scores\nThe Pacman on the top right corner can set" +
                 " the\n speed of ghost.You should enter the number betw\n een 0 and 1");
-        helpleble.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 15));
-        helptext.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 40));
+        helpleble.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 18));helpleble.setTextFill(Color.PINK);
+        helptext.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));helptext.setFill(Color.web("#0076a3"));
         helepane.getChildren().addAll(helpview,helptext,helpleble,backup);
         label2.setOnMouseClicked(e -> {
             primarystage.setScene(helpscene);
@@ -187,21 +187,21 @@ public class Main extends Application {
 
         //排行榜
         Pane rankpane = new Pane();
-        Scene rankscene = new Scene(rankpane);
+        Scene rankscene = new Scene(rankpane,670,300);
         ImageView row = new ImageView(new Image("Resources\\row.jpg"));
         row.setX(5);row.setY(5);row.setFitHeight(50);row.setFitWidth(75);
-        Text text = new Text("Ranking List");text.setFont(Font.font(30));text.setX(100);text.setY(30);
-        label11 = new Label();label11.setLayoutX(70);label11.setLayoutY(80);
-        ImageView imageView11 = new ImageView(new Image("Resources\\71.png"));imageView11.setFitWidth(180);imageView11.setFitHeight(30);imageView11.setX(70);imageView11.setY(80);
-        label21 = new Label();label21.setLayoutX(70);label21.setLayoutY(120);
-        ImageView imageView12 = new ImageView(new Image("Resources\\71.png"));imageView12.setFitWidth(160);imageView12.setFitHeight(30);imageView12.setX(70);imageView12.setY(120);
-        label31 = new Label();label31.setLayoutX(70);label31.setLayoutY(160);
-        ImageView imageView13 = new ImageView(new Image("Resources\\71.png"));imageView13.setFitWidth(140);imageView13.setFitHeight(30);imageView13.setX(70);imageView13.setY(160);
-        label4 = new Label();label4.setLayoutX(70);label4.setLayoutY(200);
-        ImageView imageView14 = new ImageView(new Image("Resources\\71.png"));imageView14.setFitWidth(120);imageView14.setFitHeight(30);imageView14.setX(70);imageView14.setY(200);
-        label5 = new Label();label5.setLayoutX(70);label5.setLayoutY(240);
-        ImageView imageView15 = new ImageView(new Image("Resources\\71.png"));imageView15.setFitWidth(100);imageView15.setFitHeight(30);imageView15.setX(70);imageView15.setY(240);
-        ImageView backimageView = new ImageView(new Image("Resources\\81.jpg"));backimageView.setFitHeight(300);backimageView.setFitWidth(360);
+        Text text = new Text("Ranking List");text.setFont(Font.font(30));text.setX(270);text.setY(30);text.setFill(Color.YELLOW);
+        label11 = new Label();label11.setLayoutX(270);label11.setLayoutY(45);
+        ImageView imageView11 = new ImageView(new Image("Resources\\71.png"));imageView11.setFitWidth(180);imageView11.setFitHeight(30);imageView11.setX(270);imageView11.setY(40);
+        label21 = new Label();label21.setLayoutX(270);label21.setLayoutY(85);
+        ImageView imageView12 = new ImageView(new Image("Resources\\71.png"));imageView12.setFitWidth(160);imageView12.setFitHeight(30);imageView12.setX(270);imageView12.setY(80);
+        label31 = new Label();label31.setLayoutX(270);label31.setLayoutY(125);
+        ImageView imageView13 = new ImageView(new Image("Resources\\71.png"));imageView13.setFitWidth(140);imageView13.setFitHeight(30);imageView13.setX(270);imageView13.setY(120);
+        label4 = new Label();label4.setLayoutX(270);label4.setLayoutY(165);
+        ImageView imageView14 = new ImageView(new Image("Resources\\71.png"));imageView14.setFitWidth(120);imageView14.setFitHeight(30);imageView14.setX(270);imageView14.setY(160);
+        label5 = new Label();label5.setLayoutX(270);label5.setLayoutY(205);
+        ImageView imageView15 = new ImageView(new Image("Resources\\71.png"));imageView15.setFitWidth(100);imageView15.setFitHeight(30);imageView15.setX(270);imageView15.setY(200);
+        ImageView backimageView = new ImageView(new Image("Resources\\mcmmzxavvfm.jpg"));backimageView.setFitHeight(300);backimageView.setFitWidth(670);
         rankpane.getChildren().addAll(backimageView,text,row,imageView11, label11,imageView12, label21,imageView13, label31,imageView14, label4,imageView15, label5);
         row.setOnMouseClicked(e -> {
             primarystage.setScene(beginscene);
@@ -214,13 +214,13 @@ public class Main extends Application {
         //新建排行榜
         Pane enterpane = new Pane();
         Scene enterscene = new Scene(enterpane);
-        ImageView winview = new ImageView(new Image("Resources\\wictory.gif"));winview.setFitWidth(400);winview.setFitHeight(400);
+        ImageView winview = new ImageView(new Image("Resources\\timg.jpg"));winview.setFitWidth(400);winview.setFitHeight(400);
         TextField tf = new TextField();tf.setLayoutX(100);tf.setLayoutY(350);
         Button add = new Button("OK");add.setLayoutX(230);add.setLayoutY(350);
-        Text wictory = new Text("W I C T O R Y");
+        Text wictory = new Text("Y O U W I N ! ! !");
         wictory.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 40));
-        wictory.setFill(Color.PINK);
-        wictory.setX(100);wictory.setY(120);
+        wictory.setFill(Color.RED);
+        wictory.setX(60);wictory.setY(20);
         enterpane.getChildren().addAll(winview,tf,add,wictory);
         add.setOnMouseClicked(e -> {
             read();
