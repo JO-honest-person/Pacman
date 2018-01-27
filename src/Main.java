@@ -61,10 +61,10 @@ public class Main extends Application {
     strongGhost strongghost1 = new strongGhost(304,260);
     strongGhost strongghost2 = new strongGhost(282,260);
     Pacman pacman = new Pacman();
-    Music music = new Music();
+    Music music = new Music();    //用于播放音乐
     private Judge judge=new Judge();
     Circle[][] circles = new Circle[26][29];//用于储存豆子。画豆子。
-    //用于播放音乐
+
     public void start(Stage primarystage) {
         //开始界面
         Pane beginpane = new Pane();
@@ -89,6 +89,7 @@ public class Main extends Application {
         Text st = new Text("The velocity of the strongghost:");st.setX(-1000);st.setY(-1000);
         Text wt = new Text("The velocity of the weakghost:");wt.setX(-1000);wt.setY(-1000);
         Button vok = new Button("OK"); vok.setLayoutX(-1000);vok.setLayoutY(-1000);
+        //四个按钮：Play,Help,Ranking list,Continue
         Label label1 = new Label("Play",n1);
         label1.setContentDisplay(ContentDisplay.RIGHT);
         label1.setTextFill(Color.BROWN);
@@ -159,6 +160,8 @@ public class Main extends Application {
             vok.setLayoutX(-1000);vok.setLayoutY(-1000);
         });
         beginpane.getChildren().addAll(n1b,n2b,n3b,n4b,back,label1,label2,label3,label9,setting,setbackground,sv,wv,vok,st,wt);
+
+
         //帮助界面
         Pane helepane = new Pane();
         Scene helpscene = new Scene(helepane);
@@ -180,6 +183,8 @@ public class Main extends Application {
         backup.setOnMouseClicked(e -> {
             primarystage.setScene(beginscene);
         });
+
+
         //排行榜
         Pane rankpane = new Pane();
         Scene rankscene = new Scene(rankpane);
@@ -247,7 +252,7 @@ public class Main extends Application {
         for(int i = 0, r = 40;i<bean.getx();i++){
             for(int j = 0,l = 40; j < bean.gety();j++){
                 //豆子
-                if( bean.firstdrawbean(i, j, r, l) ){
+                if( bean.initialBean(i, j, r, l) ){
                     circles[i][j] = new Circle();
                     circles[i][j].setRadius(4);
                     circles[i][j].setStroke(Color.YELLOW);
@@ -257,7 +262,7 @@ public class Main extends Application {
                     pane.getChildren().add(circles[i][j]);
                 }
                 //大力丸
-                else if(bean.firstdrawbigbean(i,j,r,l)){
+                else if(bean.initialBigBean(i,j,r,l)){
                     circles[i][j] = new Circle();
                     circles[i][j].setRadius(8);
                     circles[i][j].setStroke(Color.ROSYBROWN);
@@ -486,34 +491,7 @@ public class Main extends Application {
                 pacmanview.setX(pacman.getX());
                 pacmanview.setY(pacman.getY());
                 bean.assignment();
-                for(int i = 0, r = 40;i<bean.getx();i++){
-                    for(int j = 0,l = 40; j < bean.gety();j++){
-                        //豆子
-                        if( bean.firstdrawbean(i, j, r, l) ){
-                            circles[i][j].setRadius(4);
-                            circles[i][j].setCenterX(r + 10);
-                            circles[i][j].setCenterY(l + 10);
-                            // pane.getChildren().add(circles[i][j]);
-                        }
-                        //大力丸
-                        else if(bean.firstdrawbigbean(i,j,r,l)){
-                            circles[i][j].setRadius(8);
-                            circles[i][j].setCenterX(r + 10);
-                            circles[i][j].setCenterY(l + 10);
-                            // pane.getChildren().add(circles[i][j]);
-                        }
-                        //空白
-                        else{
-                            circles[i][j].setRadius(-1);
-                            circles[i][j].setCenterX(r + 10);
-                            circles[i][j].setCenterY(l + 10);
-                            // pane.getChildren().add(circles[i][j]);
-                        }
-                        l = l + 22;
-                    }
-                    r = r + 22;
-                }
-
+                drawbean();
                 simplenpc1.getback();
                 simplenpc2.getback();
                 strongghost1.getback();
@@ -654,33 +632,7 @@ public class Main extends Application {
                 pacmanview.setX(pacman.getX());
                 pacmanview.setY(pacman.getY());
                 bean.assignment();
-                for(int i = 0, r = 40;i<bean.getx();i++){
-                    for(int j = 0,l = 40; j < bean.gety();j++){
-                        //豆子
-                        if( bean.firstdrawbean(i, j, r, l) ){
-                            circles[i][j].setRadius(4);
-                            circles[i][j].setCenterX(r + 10);
-                            circles[i][j].setCenterY(l + 10);
-                            // pane.getChildren().add(circles[i][j]);
-                        }
-                        //大力丸
-                        else if(bean.firstdrawbigbean(i,j,r,l)){
-                            circles[i][j].setRadius(8);
-                            circles[i][j].setCenterX(r + 10);
-                            circles[i][j].setCenterY(l + 10);
-                            // pane.getChildren().add(circles[i][j]);
-                        }
-                        //空白
-                        else{
-                            circles[i][j].setRadius(-1);
-                            circles[i][j].setCenterX(r + 10);
-                            circles[i][j].setCenterY(l + 10);
-                            // pane.getChildren().add(circles[i][j]);
-                        }
-                        l = l + 22;
-                    }
-                    r = r + 22;
-                }
+                drawbean();
                 simplenpc1.getback();
                 simplenpc2.getback();
                 strongghost1.getback();
@@ -712,8 +664,37 @@ public class Main extends Application {
         primarystage.show();
         pacmanview.requestFocus();
     }
+    private void drawbean(){
+        for(int i = 0, r = 40;i<bean.getx();i++){
+            for(int j = 0,l = 40; j < bean.gety();j++){
+                //豆子
+                if( bean.initialBean(i, j, r, l) ){
+                    circles[i][j].setRadius(4);
+                    circles[i][j].setCenterX(r + 10);
+                    circles[i][j].setCenterY(l + 10);
+                    // pane.getChildren().add(circles[i][j]);
+                }
+                //大力丸
+                else if(bean.initialBigBean(i,j,r,l)){
+                    circles[i][j].setRadius(8);
+                    circles[i][j].setCenterX(r + 10);
+                    circles[i][j].setCenterY(l + 10);
+                    // pane.getChildren().add(circles[i][j]);
+                }
+                //空白
+                else{
+                    circles[i][j].setRadius(-1);
+                    circles[i][j].setCenterX(r + 10);
+                    circles[i][j].setCenterY(l + 10);
+                    // pane.getChildren().add(circles[i][j]);
+                }
+                l = l + 22;
+            }
+            r = r + 22;
+        }
+    }
     private void read(){
-        File rank = new File("C:\\Users\\Xsh\\Desktop\\学习\\考试材料\\src\\rank.txt");
+        File rank = new File("Ranking//rank.txt");
         try {
             Scanner input = new Scanner(rank);
             for (int i = 0; i < 5; i++) {
@@ -750,7 +731,7 @@ public class Main extends Application {
             name[rank1] = s;
             overscore[rank1] = (pacman.eatenbean * 10 + (pacman.eatenbigbean + pacman.eatenghost) * 100);
         }
-        File rank0 = new File("C:\\Users\\Xsh\\Desktop\\学习\\考试材料\\src\\rank.txt");
+        File rank0 = new File("Ranking//rank.txt");
         try {
             PrintWriter output = new PrintWriter(rank0);
             for (int i = 0; i < 5; i++) {
@@ -793,7 +774,7 @@ public class Main extends Application {
                         music.mediaPlayer6.seek(Duration.ZERO);
                         music.mediaPlayer6.play();
                     }*/
-                            bean.prepaarefordraw(pacman.getx(), pacman.gety());
+                            bean.eatBean(pacman.getx(), pacman.gety());
                         }
                     }
                     if(dir == 1){
@@ -813,7 +794,7 @@ public class Main extends Application {
                         music.mediaPlayer6.seek(Duration.ZERO);
                        music.mediaPlayer6.play();
                     }*/
-                            bean.prepaarefordraw(pacman.getx(), pacman.gety());
+                            bean.eatBean(pacman.getx(), pacman.gety());
                         }
                     }
                     if(dir == 2){
@@ -833,7 +814,7 @@ public class Main extends Application {
                         music.mediaPlayer6.seek(Duration.ZERO);
                         music.mediaPlayer6.play();
                     }*/
-                            bean.prepaarefordraw(pacman.getx(), pacman.gety());
+                            bean.eatBean(pacman.getx(), pacman.gety());
                         }
                         else if (pacman.getx() == 18 && pacman.gety() == 326) {
                             pacman.setx(612);
@@ -856,7 +837,7 @@ public class Main extends Application {
                         mediaPlayer6.seek(Duration.ZERO);
                         mediaPlayer6.play();
                     }*/
-                            bean.prepaarefordraw(pacman.getx(), pacman.gety());
+                            bean.eatBean(pacman.getx(), pacman.gety());
                         }
                         else if (pacman.getx() == 612 && pacman.gety() == 326) {
                             pacman.setx(18);

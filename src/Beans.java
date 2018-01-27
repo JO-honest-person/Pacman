@@ -15,7 +15,8 @@ public class Beans {
             }
         }
     }
-    public boolean firstdrawbean(int i ,int j,int r,int l)  {
+    //用于游戏初始化时画出豆子
+    public boolean initialBean(int i ,int j,int r,int l)  {
         boolean whetherdraw = false;
         if (!judge.isWall(r,l)) {
             beans[i][j] = true;
@@ -36,8 +37,8 @@ public class Beans {
         whetherdraw = beans[i][j];
         return whetherdraw;
     }
-    //
-    public boolean firstdrawbigbean(int i ,int j,int r,int l){
+    //用于游戏初始化时画出大力丸
+    public boolean initialBigBean(int i ,int j,int r,int l){
         boolean whetherdraw = false;
         if ((r == 40 && l == 194) || (r == 590 && l == 194) || (r == 590 && l == 458) || (r == 40 && l == 458)) {
             bigbeans[i][j] = true;
@@ -60,7 +61,8 @@ public class Beans {
     public boolean getValueOfBigbean(int i ,int j){
         return bigbeans[i][j];
     }
-    public void prepaarefordraw(double i ,double j){
+    //判断是否吃了豆子并更新状态
+    public void eatBean(double i ,double j){
         if((i - 40)%22 == 0 && (j - 40)%22 == 0 &&  !(i == 18 && j == 326) && !(i == 612 && j == 326) ){
             if(beans[(int)((i-40)/22)][(int)((j-40)/22)]){
                 Pacman.eatenbean += 1;
