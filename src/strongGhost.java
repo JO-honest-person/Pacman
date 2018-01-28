@@ -1121,7 +1121,7 @@ public class strongGhost{
         lasty = y;
     }
     public void save1(){
-        File file = new File("StrongGhost1.txt");
+        File file = new File("Data//StrongGhost1.txt");
         try{
             PrintWriter output = new PrintWriter(file);
             output.print(x);
@@ -1137,7 +1137,7 @@ public class strongGhost{
         }
     }
     public void load1(){
-        File file = new File("StrongGhost1.txt");
+        File file = new File("Data//StrongGhost1.txt");
         try
         {
             Scanner input = new Scanner(file);
@@ -1152,7 +1152,7 @@ public class strongGhost{
         }
     }
     public void save2(){
-        File file = new File("StrongGhost2.txt");
+        File file = new File("Data//StrongGhost2.txt");
         try{
             PrintWriter output = new PrintWriter(file);
             output.print(x);
@@ -1168,7 +1168,7 @@ public class strongGhost{
         }
     }
     public void load2(){
-        File file = new File("StrongGhost2.txt");
+        File file = new File("Data//StrongGhost2.txt");
         try
         {
             Scanner input = new Scanner(file);

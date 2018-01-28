@@ -78,7 +78,7 @@ public class Beans {
         }
     }
     public void save(){
-        File file1 = new File("beans.txt");
+        File file1 = new File("Data//beans.txt");
         try{
             PrintWriter output = new PrintWriter(file1);
             for(int i = 0;i < 26;i++){
@@ -98,7 +98,7 @@ public class Beans {
         catch (FileNotFoundException ex){
             System.out.println("File not found");
         }
-        File file2 = new File("bigbeans.txt");
+        File file2 = new File("Data//bigbeans.txt");
         try{
             PrintWriter output = new PrintWriter(file2);
             for(int i = 0;i < 26;i++){
@@ -120,7 +120,7 @@ public class Beans {
         }
     }
     public void load(){
-        File file1 = new File("beans.txt");
+        File file1 = new File("Data//beans.txt");
         try
         {
             Scanner input = new Scanner(file1);
@@ -139,7 +139,7 @@ public class Beans {
         catch (FileNotFoundException ex){
             System.out.println("File not found");
         }
-        File file2 = new File("bigbeans.txt");
+        File file2 = new File("Data//bigbeans.txt");
         try
         {
             Scanner input = new Scanner(file2);

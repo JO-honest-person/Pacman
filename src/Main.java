@@ -2,6 +2,8 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -49,7 +51,7 @@ public class Main extends Application {
     static int ghostmoveunderbigbean = 1;
     static int move,dir;//用于移动。
     //用于排行榜
-    private Label label11,label21,label31,label4,label5;
+    private Label rank1L,rank2L,rank3L,rank4L,rank5L;
     private int rank1 = -1;
     private int helprank = 4;
     String[] name = new String[5];
@@ -90,55 +92,55 @@ public class Main extends Application {
         Text wt = new Text("The velocity of the weakghost:");wt.setX(-1000);wt.setY(-1000);
         Button vok = new Button("OK"); vok.setLayoutX(-1000);vok.setLayoutY(-1000);
         //四个按钮：Play,Help,Ranking list,Continue
-        Label label1 = new Label("Play",n1);
-        label1.setContentDisplay(ContentDisplay.RIGHT);
-        label1.setTextFill(Color.BROWN);
-        label1.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));
-        label1.setOnMouseEntered(e -> {
-            label1.setScaleX(1.5);
-            label1.setScaleY(1.2);
+        Label playLabel = new Label("Play",n1);
+        playLabel.setContentDisplay(ContentDisplay.RIGHT);
+        playLabel.setTextFill(Color.BROWN);
+        playLabel.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));
+        playLabel.setOnMouseEntered(e -> {
+            playLabel.setScaleX(1.5);
+            playLabel.setScaleY(1.2);
         });
-        label1.setOnMouseExited(e -> {
-            label1.setScaleX(1);
-            label1.setScaleY(1);
+        playLabel.setOnMouseExited(e -> {
+            playLabel.setScaleX(1);
+            playLabel.setScaleY(1);
         });
-        Label label2 = new Label("Help",n2);
-        label2.setContentDisplay(ContentDisplay.RIGHT);
-        label2.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));
-        label2.setOnMouseEntered(e -> {
-            label2.setScaleX(1.5);
-            label2.setScaleY(1.2);
+        Label helpLabel = new Label("Help",n2);
+        helpLabel.setContentDisplay(ContentDisplay.RIGHT);
+        helpLabel.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));
+        helpLabel.setOnMouseEntered(e -> {
+            helpLabel.setScaleX(1.5);
+            helpLabel.setScaleY(1.2);
         });
-        label2.setOnMouseExited(e -> {
-            label2.setScaleX(1);
-            label2.setScaleY(1);
+        helpLabel.setOnMouseExited(e -> {
+            helpLabel.setScaleX(1);
+            helpLabel.setScaleY(1);
         });
-        Label label3 = new Label("Ranking List",n3);
-        label3.setContentDisplay(ContentDisplay.RIGHT);
-        label3.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));
-        label3.setOnMouseEntered(e -> {
-            label3.setScaleX(1.5);
-            label3.setScaleY(1.2);
+        Label rankLabel = new Label("Ranking List",n3);
+        rankLabel.setContentDisplay(ContentDisplay.RIGHT);
+        rankLabel.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));
+        rankLabel.setOnMouseEntered(e -> {
+            rankLabel.setScaleX(1.5);
+            rankLabel.setScaleY(1.2);
         });
-        label3.setOnMouseExited(e -> {
-            label3.setScaleX(1);
-            label3.setScaleY(1);
+        rankLabel.setOnMouseExited(e -> {
+            rankLabel.setScaleX(1);
+            rankLabel.setScaleY(1);
         });
-        Label label9 = new Label("Continue",n4);
-        label9.setContentDisplay(ContentDisplay.RIGHT);
-        label9.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));
-        label9.setOnMouseEntered(e -> {
-            label9.setScaleX(1.5);
-            label9.setScaleY(1.2);
+        Label continueLabel = new Label("Continue",n4);
+        continueLabel.setContentDisplay(ContentDisplay.RIGHT);
+        continueLabel.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));
+        continueLabel.setOnMouseEntered(e -> {
+            continueLabel.setScaleX(1.5);
+            continueLabel.setScaleY(1.2);
         });
-        label9.setOnMouseExited(e -> {
-            label9.setScaleX(1);
-            label9.setScaleY(1);
+        continueLabel.setOnMouseExited(e -> {
+            continueLabel.setScaleX(1);
+            continueLabel.setScaleY(1);
         });
-        label1.setLayoutX(300);label1.setLayoutY(20);
-        label2.setLayoutX(300);label2.setLayoutY(80);
-        label3.setLayoutX(300);label3.setLayoutY(200);
-        label9.setLayoutX(300);label9.setLayoutY(140);
+        playLabel.setLayoutX(300);playLabel.setLayoutY(20);
+        helpLabel.setLayoutX(300);helpLabel.setLayoutY(80);
+        rankLabel.setLayoutX(300);rankLabel.setLayoutY(200);
+        continueLabel.setLayoutX(300);continueLabel.setLayoutY(140);
         setting.setOnMouseClicked(e -> {
             setbackground.setX(300);setbackground.setY(120);
             st.setX(310);st.setY(140);
@@ -159,26 +161,26 @@ public class Main extends Application {
             wt.setX(-1000);wt.setY(-1000);
             vok.setLayoutX(-1000);vok.setLayoutY(-1000);
         });
-        beginpane.getChildren().addAll(n1b,n2b,n3b,n4b,back,label1,label2,label3,label9,setting,setbackground,sv,wv,vok,st,wt);
+        beginpane.getChildren().addAll(n1b,n2b,n3b,n4b,back,playLabel,helpLabel,rankLabel,continueLabel,setting,setbackground,sv,wv,vok,st,wt);
 
 
         //帮助界面
-        Pane helepane = new Pane();
-        Scene helpscene = new Scene(helepane,670,300);
+        Pane helpPane = new Pane();
+        Scene helpScene = new Scene(helpPane,670,300);
         ImageView helpview = new ImageView(new Image("Resources\\help_back.jpg"));
-        ImageView backup = new ImageView(new Image("Resources\\row.jpg"));
         helpview.setFitWidth(670);helpview.setFitHeight(400);
+        ImageView backup = new ImageView(new Image("Resources\\row.jpg"));
         backup.setX(5);backup.setY(5);backup.setFitHeight(50);backup.setFitWidth(75);
-        Label helpleble = new Label(); helpleble.setLayoutX(270);helpleble.setLayoutY(60);
-        Text helptext = new Text("H e l p");helptext.setX(260);helptext.setY(40);
-        helpleble.setText("   Use W S A D to control the moving of  pacman.\n If you don't want to move,just type the space. Wh\n en you eat the red beans, you can  eat the ghost " +
+        Label helpText = new Label(); helpText.setLayoutX(270);helpText.setLayoutY(60);
+        Text helpTitle = new Text("H e l p");helpTitle.setX(260);helpTitle.setY(40);
+        helpText.setText("   Use W S A D to control the moving of  pacman.\n If you don't want to move,just type the space. Wh\n en you eat the red beans, you can  eat the ghost " +
                 "\n Every bean you eat ,you will get  10 ,and red bean \n or ghost 100. You can enter the list of the top five \n scores\nThe Pacman on the top right corner can set" +
                 " the\n speed of ghost.You should enter the number betw\n een 0 and 1");
-        helpleble.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 18));helpleble.setTextFill(Color.PINK);
-        helptext.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));helptext.setFill(Color.web("#0076a3"));
-        helepane.getChildren().addAll(helpview,helptext,helpleble,backup);
-        label2.setOnMouseClicked(e -> {
-            primarystage.setScene(helpscene);
+        helpText.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 18));helpText.setTextFill(Color.PINK);
+        helpTitle.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 50));helpTitle.setFill(Color.web("#0076a3"));
+        helpPane.getChildren().addAll(helpview,helpTitle,helpText,backup);
+        helpLabel.setOnMouseClicked(e -> {
+            primarystage.setScene(helpScene);
         });
         backup.setOnMouseClicked(e -> {
             primarystage.setScene(beginscene);
@@ -186,54 +188,58 @@ public class Main extends Application {
 
 
         //排行榜
-        Pane rankpane = new Pane();
-        Scene rankscene = new Scene(rankpane,670,300);
+        Pane rankPane = new Pane();
+        Scene rankScene = new Scene(rankPane,670,300);
         ImageView row = new ImageView(new Image("Resources\\row.jpg"));
         row.setX(5);row.setY(5);row.setFitHeight(50);row.setFitWidth(75);
-        Text text = new Text("Ranking List");text.setFont(Font.font(30));text.setX(270);text.setY(30);text.setFill(Color.YELLOW);
-        label11 = new Label();label11.setLayoutX(270);label11.setLayoutY(45);
+        Text rankTitle = new Text("Ranking List");rankTitle.setFont(Font.font(30));rankTitle.setX(270);rankTitle.setY(30);rankTitle.setFill(Color.YELLOW);
+        rank1L = new Label();rank1L.setLayoutX(270);rank1L.setLayoutY(45);
         ImageView imageView11 = new ImageView(new Image("Resources\\71.png"));imageView11.setFitWidth(180);imageView11.setFitHeight(30);imageView11.setX(270);imageView11.setY(40);
-        label21 = new Label();label21.setLayoutX(270);label21.setLayoutY(85);
+        rank2L = new Label();rank2L.setLayoutX(270);rank2L.setLayoutY(85);
         ImageView imageView12 = new ImageView(new Image("Resources\\71.png"));imageView12.setFitWidth(160);imageView12.setFitHeight(30);imageView12.setX(270);imageView12.setY(80);
-        label31 = new Label();label31.setLayoutX(270);label31.setLayoutY(125);
+        rank3L = new Label();rank3L.setLayoutX(270);rank3L.setLayoutY(125);
         ImageView imageView13 = new ImageView(new Image("Resources\\71.png"));imageView13.setFitWidth(140);imageView13.setFitHeight(30);imageView13.setX(270);imageView13.setY(120);
-        label4 = new Label();label4.setLayoutX(270);label4.setLayoutY(165);
+        rank4L = new Label();rank4L.setLayoutX(270);rank4L.setLayoutY(165);
         ImageView imageView14 = new ImageView(new Image("Resources\\71.png"));imageView14.setFitWidth(120);imageView14.setFitHeight(30);imageView14.setX(270);imageView14.setY(160);
-        label5 = new Label();label5.setLayoutX(270);label5.setLayoutY(205);
+        rank5L = new Label();rank5L.setLayoutX(270);rank5L.setLayoutY(205);
         ImageView imageView15 = new ImageView(new Image("Resources\\71.png"));imageView15.setFitWidth(100);imageView15.setFitHeight(30);imageView15.setX(270);imageView15.setY(200);
         ImageView backimageView = new ImageView(new Image("Resources\\mcmmzxavvfm.jpg"));backimageView.setFitHeight(300);backimageView.setFitWidth(670);
-        rankpane.getChildren().addAll(backimageView,text,row,imageView11, label11,imageView12, label21,imageView13, label31,imageView14, label4,imageView15, label5);
+        rankPane.getChildren().addAll(backimageView,rankTitle,row,imageView11, rank1L,imageView12, rank2L,imageView13, rank3L,imageView14, rank4L,imageView15, rank5L);
         row.setOnMouseClicked(e -> {
             primarystage.setScene(beginscene);
         });
-        label3.setOnMouseClicked(e -> {
+        rankLabel.setOnMouseClicked(e -> {
             read();
             show();
-            primarystage.setScene(rankscene);
+            primarystage.setScene(rankScene);
         });
-        //新建排行榜
-        Pane enterpane = new Pane();
-        Scene enterscene = new Scene(enterpane);
+
+
+        //胜利界面
+        Pane winPane = new Pane();
+        Scene winScene = new Scene(winPane);
         ImageView winview = new ImageView(new Image("Resources\\timg.jpg"));winview.setFitWidth(400);winview.setFitHeight(400);
         TextField tf = new TextField();tf.setLayoutX(100);tf.setLayoutY(350);
         Button add = new Button("OK");add.setLayoutX(230);add.setLayoutY(350);
         Text wictory = new Text("Y O U W I N ! ! !");
         wictory.setFont(Font.font("Times New Roman", FontWeight.BOLD, FontPosture.ITALIC, 40));
         wictory.setFill(Color.RED);
-        wictory.setX(60);wictory.setY(20);
-        enterpane.getChildren().addAll(winview,tf,add,wictory);
+        wictory.setX(60);wictory.setY(40);
+        winPane.getChildren().addAll(winview,tf,add,wictory);
         add.setOnMouseClicked(e -> {
             read();
             String s = tf.getText();
             checkthescore(s);
             show();
-            primarystage.setScene(rankscene);
+            primarystage.setScene(rankScene);
             rank1 = -1;
             helprank = 4;
         });
+
+
         //游戏界面
-        Pane pane = new Pane();
-        Scene scene = new Scene(pane,880,700);
+        Pane gamePane = new Pane();
+        Scene gameScene = new Scene(gamePane,880,700);
         ImageView background = new ImageView(new Image("Resources\\background.jpg"));
         Image playagainimage = new Image("Resources\\play again.jpg");
         Image pacmanimage = new Image("Resources\\pacman 00.gif");
@@ -245,7 +251,8 @@ public class Main extends Application {
         volghostview3 = new ImageView(volghostimage);volghostview3.setX(-1000);volghostview3.setY(-1000);
         volghostview4 = new ImageView(volghostimage);volghostview4.setX(-1000);volghostview4.setY(-1000);
         //设置背景。
-        pane.getChildren().add(background);
+        gamePane.getChildren().add(background);
+
         ImageView playagain = new ImageView(playagainimage);playagain.setFitHeight(60);playagain.setFitWidth(230);playagain.setX(650);playagain.setY(110);
         //画出豆子。
         bean.assignment();
@@ -259,7 +266,7 @@ public class Main extends Application {
                     circles[i][j].setFill(Color.YELLOW);
                     circles[i][j].setCenterX(r + 10);
                     circles[i][j].setCenterY(l + 10);
-                    pane.getChildren().add(circles[i][j]);
+                    gamePane.getChildren().add(circles[i][j]);
                 }
                 //大力丸
                 else if(bean.initialBigBean(i,j,r,l)){
@@ -269,7 +276,7 @@ public class Main extends Application {
                     circles[i][j].setFill(Color.RED);
                     circles[i][j].setCenterX(r + 10);
                     circles[i][j].setCenterY(l + 10);
-                    pane.getChildren().add(circles[i][j]);
+                    gamePane.getChildren().add(circles[i][j]);
                 }
                 //空白
                 else{
@@ -279,7 +286,7 @@ public class Main extends Application {
                     circles[i][j].setFill(Color.YELLOW);
                     circles[i][j].setCenterX(r + 10);
                     circles[i][j].setCenterY(l + 10);
-                    pane.getChildren().add(circles[i][j]);
+                    gamePane.getChildren().add(circles[i][j]);
                 }
                 l = l + 22;
             }
@@ -336,10 +343,12 @@ public class Main extends Application {
             pacmanview.requestFocus();
         });
         //存储游戏
-        Button save = new Button("Save");
-        save.setStyle("-fx-background-color: pink");
-        save.setFont(Font.font("Verdana",30));
-        save.setLayoutX(710);save.setLayoutY(260);
+        Label save_label = new Label("S a v e");
+        save_label.setStyle("-fx-text-fill:yellow;");
+        Button save = new Button("",save_label);
+        save.setStyle("-fx-background-color: black");
+        save_label.setFont(Font.font("Verdana",30));
+        save.setLayoutX(655);save.setLayoutY(240);save.setMinSize(225,70);
         save.setOnMouseClicked(e -> {
             timer.cancel();
             simplenpc1.save1();
@@ -370,14 +379,15 @@ public class Main extends Application {
             } catch (FileNotFoundException ex) {
                 System.out.println("File not found");
             }
-
         });
+
         //游戏结束背景
         Image gameoverimage = new Image("Resources\\game over.jpg");
         gameoverview = new ImageView(gameoverimage);
         gameoverview.setFitWidth(655);
         gameoverview.setFitHeight(720);
         gameoverview.setX(-1000);gameoverview.setY(-1000);
+
         //画出生命值
         Image live1image = new Image("Resources\\life1.jpeg");
         Image live2image = new Image("Resources\\life2.jpeg");
@@ -391,6 +401,7 @@ public class Main extends Application {
         live2view.setY(-1000);
         live3view.setX(655);
         live3view.setY(0);
+
         //显示分数
         Image scoreimage = new Image("Resources\\score background.jpg");
         ImageView scoreview = new ImageView(scoreimage);
@@ -400,6 +411,7 @@ public class Main extends Application {
         score = new Text(655,100,"Score :" + (pacman.eatenbean * 10 + (pacman.eatenbigbean + pacman.eatenghost) * 100));
         score.setFont(Font.font("Verdana",30));
         score.setFill(Color.YELLOW);
+
         //暂停游戏。
         Image pause = new Image("Resources\\pause.png");
         ImageView pauseviwe = new ImageView(pause);
@@ -416,7 +428,22 @@ public class Main extends Application {
             playview.setY(-1000);playview.setX(-1000);
             playorpause = true;
         });
-        pane.getChildren().addAll(playagain,pacmanview,weakghost1,weakghost2,StrongGhost1,StrongGhost2,choosebackview, choosemusic,vBox,save,gameoverview,volghostview1,volghostview2,volghostview3,volghostview4,live3view,live1view,live2view,scoreview,score,pauseviwe,playview);
+
+
+        //返回主界面
+        BackgroundImage backgroundImage = new BackgroundImage(new Image("Resources\\score background.jpg"),null,null,null,null);
+        Background rtn_background = new Background(backgroundImage);
+        Button return_btn = new Button("R e t u r n");
+        return_btn.setBackground(rtn_background);
+        return_btn.setFont(Font.font("Verdana",30));
+        return_btn.setLayoutX(655);return_btn.setLayoutY(310);return_btn.setMinSize(225,70);
+        return_btn.setOnMouseClicked(e -> {
+            timer.cancel();
+            playorpause = false;
+            primarystage.setScene(beginscene);
+        });
+
+        gamePane.getChildren().addAll(playagain,pacmanview,weakghost1,weakghost2,StrongGhost1,StrongGhost2,choosebackview, choosemusic,vBox,save,gameoverview,volghostview1,volghostview2,volghostview3,volghostview4,live3view,live1view,live2view,scoreview,score,pauseviwe,playview,return_btn);
         //移动
         pacmanview.setOnKeyPressed(e -> {
             switch (e.getCode()) {
@@ -431,7 +458,7 @@ public class Main extends Application {
                                 }
                             }
                         }
-                        primarystage.setScene(enterscene);
+                        primarystage.setScene(winScene);
                         timer.cancel();
                     }}break;
                 case S:
@@ -446,7 +473,7 @@ public class Main extends Application {
                                 }
                             }
                         }
-                        primarystage.setScene(enterscene);
+                        primarystage.setScene(winScene);
                         timer.cancel();
                     }}break;
                 case A:
@@ -461,7 +488,7 @@ public class Main extends Application {
                                 }
                             }
                         }
-                        primarystage.setScene(enterscene);
+                        primarystage.setScene(winScene);
                         timer.cancel();
                     }}break;
                 case D:
@@ -476,47 +503,47 @@ public class Main extends Application {
                                 }
                             }
                         }
-                        primarystage.setScene(enterscene);
+                        primarystage.setScene(winScene);
                         timer.cancel();
                     }}break;
                 case SPACE:{move = 4;}break;
             }
-            //重玩.
-            playagain.setOnMouseClicked(a -> {
-                timer.cancel();
-                timer = new Timer();
-                timer.schedule(new move(),3000,50);
-                gameoverview.setX(-1000);gameoverview.setY(-1000);
-                pacman.getback();
-                pacmanview.setX(pacman.getX());
-                pacmanview.setY(pacman.getY());
-                bean.assignment();
-                drawbean();
-                simplenpc1.getback();
-                simplenpc2.getback();
-                strongghost1.getback();
-                strongghost2.getback();
-                weakghost1.setX(simplenpc1.getx());weakghost1.setY(simplenpc1.gety());
-                volghostview1.setX(-1000);volghostview1.setY(-1000);
-                weakghost2.setX(simplenpc2.getx());weakghost2.setY(simplenpc2.gety());
-                volghostview2.setX(-1000);volghostview2.setY(-1000);
-                StrongGhost1.setX(strongghost1.getx());StrongGhost1.setY(strongghost1.gety());
-                volghostview3.setX(-1000);volghostview3.setY(-1000);
-                StrongGhost2.setX(strongghost2.getx());StrongGhost2.setY(strongghost2.gety());
-                volghostview4.setX(-1000);volghostview4.setY(-1000);
-                live1view.setX(-1000);
-                live1view.setY(-1000);
-                live2view.setX(-1000);
-                live2view.setY(-1000);
-                live3view.setX(655);
-                live3view.setY(0);
-                underbigbean = false;stepunderbigbean = 0;ghostmoveunderbigbean = 1;
-                pacman.playagain();simplenpc1.playagain();simplenpc2.playagain();strongghost1.playagain();strongghost2.playagain();
-                score.setText("Score :" + (pacman.eatenbean * 10 + (pacman.eatenbigbean + pacman.eatenghost) * 100));
-            });
+        });
+        //重玩.
+        playagain.setOnMouseClicked(a -> {
+            timer.cancel();
+            timer = new Timer();
+            timer.schedule(new move(),3000,50);
+            gameoverview.setX(-1000);gameoverview.setY(-1000);
+            pacman.getback();
+            pacmanview.setX(pacman.getX());
+            pacmanview.setY(pacman.getY());
+            bean.assignment();
+            drawbean();
+            simplenpc1.getback();
+            simplenpc2.getback();
+            strongghost1.getback();
+            strongghost2.getback();
+            weakghost1.setX(simplenpc1.getx());weakghost1.setY(simplenpc1.gety());
+            volghostview1.setX(-1000);volghostview1.setY(-1000);
+            weakghost2.setX(simplenpc2.getx());weakghost2.setY(simplenpc2.gety());
+            volghostview2.setX(-1000);volghostview2.setY(-1000);
+            StrongGhost1.setX(strongghost1.getx());StrongGhost1.setY(strongghost1.gety());
+            volghostview3.setX(-1000);volghostview3.setY(-1000);
+            StrongGhost2.setX(strongghost2.getx());StrongGhost2.setY(strongghost2.gety());
+            volghostview4.setX(-1000);volghostview4.setY(-1000);
+            live1view.setX(-1000);
+            live1view.setY(-1000);
+            live2view.setX(-1000);
+            live2view.setY(-1000);
+            live3view.setX(655);
+            live3view.setY(0);
+            underbigbean = false;stepunderbigbean = 0;ghostmoveunderbigbean = 1;playorpause=true;pacmanview.requestFocus();
+            pacman.playagain();simplenpc1.playagain();simplenpc2.playagain();strongghost1.playagain();strongghost2.playagain();
+            score.setText("Score :" + (pacman.eatenbean * 10 + (pacman.eatenbigbean + pacman.eatenghost) * 100));
         });
         //继续游戏
-        label9.setOnMouseClicked(a -> {
+        continueLabel.setOnMouseClicked(a -> {
             simplenpc1.load1();
             simplenpc2.load2();
             strongghost1.load1();
@@ -623,10 +650,12 @@ public class Main extends Application {
             score.setText("Score :" + (pacman.eatenbean * 10 + (pacman.eatenbigbean + pacman.eatenghost) * 100));
             timer = new Timer();
             timer.schedule(new move(), 3000, 50);
-            primarystage.setScene(scene);
+            forsecondplay +=1;playorpause=true;
+            primarystage.setScene(gameScene);
+            pacmanview.requestFocus();
         });
         //开始游戏
-        label1.setOnMouseClicked(e -> {
+        playLabel.setOnMouseClicked(e -> {
             if(forsecondplay > 0 ){
                 pacman.getback();
                 pacmanview.setX(pacman.getX());
@@ -651,14 +680,16 @@ public class Main extends Application {
                 live2view.setY(-1000);
                 live3view.setX(655);
                 live3view.setY(0);
-                underbigbean = false;stepunderbigbean = 0;ghostmoveunderbigbean = 1;
+                underbigbean = false;stepunderbigbean = 0;ghostmoveunderbigbean = 1;playorpause=true;
                 pacman.playagain();simplenpc1.playagain();simplenpc2.playagain();strongghost1.playagain();strongghost2.playagain();
                 score.setText("Score :" + (pacman.eatenbean * 10 + (pacman.eatenbigbean + pacman.eatenghost) * 100));
             }
-            primarystage.setScene(scene);
+            primarystage.setScene(gameScene);
             timer = new Timer();
             timer.schedule(new move(),3000,50);
             forsecondplay += 1 ;
+            playorpause=true;
+            pacmanview.requestFocus();
         });
         primarystage.setScene(beginscene);
         primarystage.show();
@@ -706,11 +737,11 @@ public class Main extends Application {
         }
     }
     private void show(){
-        label11.setText(name[0] + "  " +overscore[0]);
-        label21.setText(name[1] + "  " +overscore[1]);
-        label31.setText(name[2] + "  " +overscore[2]);
-        label4.setText(name[3] + "  " +overscore[3]);
-        label5.setText(name[4] + "  " +overscore[4]);
+        rank1L.setText(name[0] + "  " +overscore[0]);
+        rank2L.setText(name[1] + "  " +overscore[1]);
+        rank3L.setText(name[2] + "  " +overscore[2]);
+        rank4L.setText(name[3] + "  " +overscore[3]);
+        rank5L.setText(name[4] + "  " +overscore[4]);
     }
     private void checkthescore(String s){
         entire:

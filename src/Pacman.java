@@ -52,7 +52,7 @@ public class Pacman {
         eatenghost = 0;
     }
     public void save(){
-        File file = new File("pacman.txt");
+        File file = new File("Data//pacman.txt");
         try{
             PrintWriter output = new PrintWriter(file);
             output.print(x);
@@ -72,7 +72,7 @@ public class Pacman {
         }
     }
     public void load(){
-        File file = new File("pacman.txt");
+        File file = new File("Data//pacman.txt");
         try
         {
             Scanner input = new Scanner(file);

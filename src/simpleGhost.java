@@ -109,7 +109,7 @@ public class simpleGhost{
         lasty = y;
     }
     public void save1(){
-        File file = new File("simplenpc1.txt");
+        File file = new File("Data//simplenpc1.txt");
         try{
             PrintWriter output = new PrintWriter(file);
             output.print(x);
@@ -125,7 +125,7 @@ public class simpleGhost{
         }
     }
     public void load1(){
-        File file = new File("simplenpc1.txt");
+        File file = new File("Data//simplenpc1.txt");
         try
         {
             Scanner input = new Scanner(file);
@@ -140,7 +140,7 @@ public class simpleGhost{
         }
     }
     public void save2(){
-        File file = new File("simplenpc2.txt");
+        File file = new File("Data//simplenpc2.txt");
         try{
             PrintWriter output = new PrintWriter(file);
             output.print(x);
@@ -156,7 +156,7 @@ public class simpleGhost{
         }
     }
     public void load2(){
-        File file = new File("simplenpc2.txt");
+        File file = new File("Data//simplenpc2.txt");
         try
         {
             Scanner input = new Scanner(file);
