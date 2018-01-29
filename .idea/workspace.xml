@@ -15,11 +15,10 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="282" column="49" lean-forward="true" selection-start-line="282" selection-start-column="49" selection-end-line="282" selection-end-column="49" />
+            <state relative-caret-position="1278">
+              <caret line="448" column="41" lean-forward="false" selection-start-line="448" selection-start-column="41" selection-end-line="448" selection-end-column="41" />
               <folding>
-                <element signature="e#22042#24423#0" expanded="false" />
-                <element signature="e#26213#30956#0" expanded="false" />
+                <element signature="e#26264#31007#0" expanded="false" />
                 <element signature="method#drawbean#0;class#Main#0" expanded="false" />
                 <element signature="method#read#0;class#Main#0" expanded="false" />
                 <element signature="method#show#0;class#Main#0" expanded="false" />
@@ -33,8 +32,8 @@
       <file leaf-file-name="strongGhost.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/strongGhost.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="1083" column="13" lean-forward="true" selection-start-line="1083" selection-start-column="13" selection-end-line="1083" selection-end-column="13" />
+            <state relative-caret-position="26875">
+              <caret line="1083" column="13" lean-forward="false" selection-start-line="1083" selection-start-column="13" selection-end-line="1083" selection-end-column="13" />
               <folding>
                 <element signature="method#strongGhost#0;class#strongGhost#0" expanded="false" />
                 <element signature="method#move#0;class#strongGhost#0" expanded="false" />
@@ -98,11 +97,11 @@
       <list>
         <option value="$PROJECT_DIR$/src/Music.java" />
         <option value="$PROJECT_DIR$/src/Judge.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Beans.java" />
         <option value="$PROJECT_DIR$/src/Pacman.java" />
         <option value="$PROJECT_DIR$/src/simpleGhost.java" />
         <option value="$PROJECT_DIR$/src/strongGhost.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -112,7 +111,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -132,10 +131,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,6 +150,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,15 +291,15 @@
       <workItem from="1517048297208" duration="7013000" />
       <workItem from="1517105380788" duration="4715000" />
       <workItem from="1517121219762" duration="7603000" />
+      <workItem from="1517188908698" duration="474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34158000" />
+    <option name="totallyTimeSpent" value="34632000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -357,8 +356,40 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#22042#24423#0" expanded="false" />
-            <element signature="e#26213#30956#0" expanded="false" />
+            <element signature="e#26264#31007#0" expanded="false" />
+            <element signature="method#drawbean#0;class#Main#0" expanded="false" />
+            <element signature="method#read#0;class#Main#0" expanded="false" />
+            <element signature="method#show#0;class#Main#0" expanded="false" />
+            <element signature="method#checkthescore#0;class#Main#0" expanded="false" />
+            <element signature="class#move#0;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/strongGhost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26875">
+          <caret line="1083" column="13" lean-forward="true" selection-start-line="1083" selection-start-column="13" selection-end-line="1083" selection-end-column="13" />
+          <folding>
+            <element signature="method#strongGhost#0;class#strongGhost#0" expanded="false" />
+            <element signature="method#move#0;class#strongGhost#0" expanded="false" />
+            <element signature="method#record#0;class#strongGhost#0" expanded="false" />
+            <element signature="method#save1#0;class#strongGhost#0" expanded="false" />
+            <element signature="method#load1#0;class#strongGhost#0" expanded="false" />
+            <element signature="method#save2#0;class#strongGhost#0" expanded="false" />
+            <element signature="method#load2#0;class#strongGhost#0" expanded="false" />
+            <element signature="method#getback#0;class#strongGhost#0" expanded="false" />
+            <element signature="method#checkwhetherdie#0;class#strongGhost#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#26264#31007#0" expanded="false" />
             <element signature="method#drawbean#0;class#Main#0" expanded="false" />
             <element signature="method#read#0;class#Main#0" expanded="false" />
             <element signature="method#show#0;class#Main#0" expanded="false" />
@@ -391,8 +422,7 @@
         <state relative-caret-position="5275">
           <caret line="211" column="45" lean-forward="true" selection-start-line="211" selection-start-column="45" selection-end-line="211" selection-end-column="45" />
           <folding>
-            <element signature="e#22042#24423#0" expanded="false" />
-            <element signature="e#26213#30956#0" expanded="false" />
+            <element signature="e#26264#31007#0" expanded="false" />
             <element signature="method#drawbean#0;class#Main#0" expanded="false" />
             <element signature="method#read#0;class#Main#0" expanded="false" />
             <element signature="method#show#0;class#Main#0" expanded="false" />
@@ -425,8 +455,7 @@
         <state relative-caret-position="20925">
           <caret line="837" column="44" lean-forward="true" selection-start-line="837" selection-start-column="44" selection-end-line="837" selection-end-column="44" />
           <folding>
-            <element signature="e#22042#24423#0" expanded="false" />
-            <element signature="e#26213#30956#0" expanded="false" />
+            <element signature="e#26264#31007#0" expanded="false" />
             <element signature="method#drawbean#0;class#Main#0" expanded="false" />
             <element signature="method#read#0;class#Main#0" expanded="false" />
             <element signature="method#show#0;class#Main#0" expanded="false" />
@@ -459,8 +488,7 @@
         <state relative-caret-position="22225">
           <caret line="960" column="121" lean-forward="false" selection-start-line="960" selection-start-column="121" selection-end-line="960" selection-end-column="121" />
           <folding>
-            <element signature="e#22042#24423#0" expanded="false" />
-            <element signature="e#26213#30956#0" expanded="false" />
+            <element signature="e#26264#31007#0" expanded="false" />
             <element signature="method#drawbean#0;class#Main#0" expanded="false" />
             <element signature="method#read#0;class#Main#0" expanded="false" />
             <element signature="method#show#0;class#Main#0" expanded="false" />
@@ -539,8 +567,7 @@
         <state relative-caret-position="24225">
           <caret line="991" column="1" lean-forward="false" selection-start-line="991" selection-start-column="1" selection-end-line="991" selection-end-column="1" />
           <folding>
-            <element signature="e#22042#24423#0" expanded="false" />
-            <element signature="e#26213#30956#0" expanded="false" />
+            <element signature="e#26264#31007#0" expanded="false" />
             <element signature="method#drawbean#0;class#Main#0" expanded="false" />
             <element signature="method#read#0;class#Main#0" expanded="false" />
             <element signature="method#show#0;class#Main#0" expanded="false" />
@@ -679,8 +706,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/strongGhost.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="1083" column="13" lean-forward="true" selection-start-line="1083" selection-start-column="13" selection-end-line="1083" selection-end-column="13" />
+        <state relative-caret-position="26875">
+          <caret line="1083" column="13" lean-forward="false" selection-start-line="1083" selection-start-column="13" selection-end-line="1083" selection-end-column="13" />
           <folding>
             <element signature="method#strongGhost#0;class#strongGhost#0" expanded="false" />
             <element signature="method#move#0;class#strongGhost#0" expanded="false" />
@@ -697,11 +724,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="282" column="49" lean-forward="true" selection-start-line="282" selection-start-column="49" selection-end-line="282" selection-end-column="49" />
+        <state relative-caret-position="1278">
+          <caret line="448" column="41" lean-forward="false" selection-start-line="448" selection-start-column="41" selection-end-line="448" selection-end-column="41" />
           <folding>
-            <element signature="e#22042#24423#0" expanded="false" />
-            <element signature="e#26213#30956#0" expanded="false" />
+            <element signature="e#26264#31007#0" expanded="false" />
             <element signature="method#drawbean#0;class#Main#0" expanded="false" />
             <element signature="method#read#0;class#Main#0" expanded="false" />
             <element signature="method#show#0;class#Main#0" expanded="false" />

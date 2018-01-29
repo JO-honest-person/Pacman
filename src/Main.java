@@ -68,6 +68,7 @@ public class Main extends Application {
     Circle[][] circles = new Circle[26][29];//用于储存豆子。画豆子。
 
     public void start(Stage primarystage) {
+        primarystage.setResizable(false);//禁止窗体缩放
         //开始界面
         Pane beginpane = new Pane();
         Scene beginscene = new Scene(beginpane,670,300);
@@ -507,6 +508,7 @@ public class Main extends Application {
                         timer.cancel();
                     }}break;
                 case SPACE:{move = 4;}break;
+
             }
         });
         //重玩.
