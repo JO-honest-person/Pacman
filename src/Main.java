@@ -441,6 +441,7 @@ public class Main extends Application {
         return_btn.setOnMouseClicked(e -> {
             timer.cancel();
             playorpause = false;
+            playview.setY(-1000);playview.setX(-1000);
             primarystage.setScene(beginscene);
         });
 
